@@ -4,7 +4,7 @@ from scrapy import get_data
 app = Flask(__name__)
 p_bind = "上海市"
 c_bind = None
-@app.route('/')
+@app.route('/977bc4c1-1f58-437e-b312-a1c5642de5f3')
 def hello_world():
     n_data,p_data =get_data()
     now = time.strftime("%Y-%m-%d %H:%M:%S")
