@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/dashboard.css" rel="stylesheet">
+    <title>实时数据</title>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>实时数据</h1>
+            <p class="lead">更新时间:{{ reflashTime }}&nbsp; 数据源更新时间:{{ nation.modifyTime }}&nbsp;数据来源:<a href="https://3g.dxy.cn/newh5/view/pneumonia">丁香园</a></p>
+        </div>
+        <h2>全国数据</h2>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>确诊<span class="text-danger">{{ nation.confirmedCount }}</span></h1>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>疑似<span class="text-warning">{{ nation.suspectedCount }}</span></h1>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>治愈<span class="text-success">{{ nation.curedCount }}</span></h1>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>死亡<span>{{ nation.deadCount }}</span></h1>
+            </div>
+        </div>
+        <h2>本地数据<small class="text-muted">{{ nowPlace }}</small></h2>
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>确诊<span class="text-danger">{{ local.confirmedCount }}</span></h1>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>疑似<span class="text-warning">{{ local.suspectedCount }}</span></h1>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>治愈<span class="text-success">{{ local.curedCount }}</span></h1>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3">
+                <h1>死亡<span>{{ local.deadCount }}</span></h1>
+            </div>
+        </div>
+        <h2>可视化</h2>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                <img class="img-responsive" src="{{ nation.mapShowUrl|safe }}">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6">
+                <img class="img-responsive" src="{{ nation.chartShowUrl|safe }}">
+            </div>
+        </div>
+    </div>
+    <script src="https://libs.cdnjs.net/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script language="JavaScript">
+        function myrefresh(){
+            window.location.reload();
+            }
+        setTimeout('myrefresh()',60000); //指定60秒刷新一次
+    </script>
+</body>
+</html>
